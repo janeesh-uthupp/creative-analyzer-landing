@@ -261,9 +261,23 @@
                             See How It Works
                         </a>
                     </div>
+                </div>
 
-                    <!-- Webdura Credibility Block -->
-                    <div class="relative p-6 bg-gradient-to-br from-white to-blue-50/30 rounded-2xl border-2 border-blue-100 shadow-lg shadow-blue-500/5 backdrop-blur-sm">
+                <!-- Right column: Screenshot with effects -->
+                <div class="relative lg:block hidden lg:col-span-3 space-y-6">
+                    <div class="relative">
+                        <!-- Background blur circles -->
+                        <div class="absolute -top-20 -right-20 w-[450px] h-[450px] bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 float-animation"></div>
+                        <div class="absolute -bottom-20 -left-20 w-[450px] h-[450px] bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 float-animation" style="animation-delay: 1s;"></div>
+
+                        <!-- Screenshot - Full view without cutoff -->
+                        <div class="relative z-10 rounded-3xl overflow-hidden border-2 border-slate-200/50 shadow-2xl shadow-blue-500/10 backdrop-blur-sm">
+                            <img src="assets/images/dashboard-top1.png" alt="Dashboard Preview" class="w-full h-full object-cover object-top" onerror="this.parentElement.innerHTML='<div class=\'bg-gradient-to-br from-blue-50 to-slate-50 h-96 flex items-center justify-center text-slate-500 text-lg font-medium\'>Dashboard Preview<br/>Coming Soon</div>'">
+                        </div>
+                    </div>
+
+                    <!-- Webdura Credibility Block - Below Dashboard -->
+                    <div class="relative p-6 bg-gradient-to-br from-white to-blue-50/30 rounded-2xl border-2 border-blue-100 shadow-lg shadow-blue-500/5 backdrop-blur-sm z-10">
                         <div class="flex flex-col gap-4">
                             <!-- Built by Webdura -->
                             <div class="flex items-center gap-3 pb-3 border-b border-blue-100">
@@ -305,18 +319,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Right column: Screenshot with effects -->
-                <div class="relative lg:block hidden lg:col-span-3">
-                    <!-- Background blur circles -->
-                    <div class="absolute -top-20 -right-20 w-[450px] h-[450px] bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 float-animation"></div>
-                    <div class="absolute -bottom-20 -left-20 w-[450px] h-[450px] bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 float-animation" style="animation-delay: 1s;"></div>
-
-                    <!-- Screenshot - Full view without cutoff -->
-                    <div class="relative z-10 rounded-3xl overflow-hidden border-2 border-slate-200/50 shadow-2xl shadow-blue-500/10 backdrop-blur-sm">
-                        <img src="assets/images/dashboard-top1.png" alt="Dashboard Preview" class="w-full h-full object-cover object-top" onerror="this.parentElement.innerHTML='<div class=\'bg-gradient-to-br from-blue-50 to-slate-50 h-96 flex items-center justify-center text-slate-500 text-lg font-medium\'>Dashboard Preview<br/>Coming Soon</div>'">
                     </div>
                 </div>
             </div>
