@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Performance Analyzer | Webdura Tools</title>
+    <meta name="description" content="Know which Meta ads creatives drive leads. Built by Webdura's performance marketing team with 15 years of campaign expertise.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Gradient backgrounds */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Feature card hover effect */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* CTA button pulse */
+        @keyframes pulse-blue {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+        }
+        
+        .btn-pulse {
+            animation: pulse-blue 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <img src="assets/images/webdura-logo.png" alt="Webdura" class="h-8 md:h-10" onerror="this.style.display='none'">
+                    <div class="text-xl md:text-2xl font-bold text-gray-800">
+                        Webdura <span class="text-blue-600">Tools</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600 transition">How It Works</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-blue-600 transition">Pricing</a>
+                    <a href="https://webdura.in" class="text-gray-600 hover:text-blue-600 transition">About Webdura</a>
+                    <a href="#cta" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                        Start Free Analysis
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+                <a href="#features" class="block text-gray-600 hover:text-blue-600 transition">Features</a>
+                <a href="#how-it-works" class="block text-gray-600 hover:text-blue-600 transition">How It Works</a>
+                <a href="#pricing" class="block text-gray-600 hover:text-blue-600 transition">Pricing</a>
+                <a href="https://webdura.in" class="block text-gray-600 hover:text-blue-600 transition">About Webdura</a>
+                <a href="#cta" class="block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition text-center">
+                    Start Free Analysis
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center text-white fade-in-up">
+                <!-- Badge -->
+                <div class="inline-flex items-center bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                    <span class="text-sm font-medium">Built by Performance Marketing Experts</span>
+                </div>
+                
+                <!-- Headline -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    Know Which Creatives<br/>Drive Actual Leads
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="text-xl md:text-2xl mb-8 text-white/90">
+                    Meta Ads creative intelligence tool built by Webdura's team.<br/>
+                    The same analytics we use to manage ₹50+ Cr annual ad spend.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                    <a href="#cta" class="btn-pulse bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg w-full sm:w-auto text-center">
+                        Start Free Analysis
+                    </a>
+                    <a href="#how-it-works" class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition border-2 border-white/30 w-full sm:w-auto text-center">
+                        See How It Works
+                    </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-white/80">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                        </svg>
+                        <span>15 Years Experience</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>200+ Brands Served</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>₹50+ Cr Managed</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Image/Dashboard Preview -->
+            <div class="max-w-5xl mx-auto mt-12 fade-in-up">
+                <div class="bg-white rounded-xl shadow-2xl p-2 md:p-4">
+                    <img src="assets/images/dashboard-preview.png" alt="Creative Performance Analyzer Dashboard" class="rounded-lg w-full" onerror="this.parentElement.innerHTML='<div class=\'bg-gray-200 rounded-lg h-96 flex items-center justify-center text-gray-500\'>Dashboard Preview<br/>Coming Soon</div>'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Still Guessing Which Creatives Work?
+                </h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    Most marketers waste 30-40% of their ad budget on underperforming creatives because they can't quickly identify what's working and what's not.
+                </p>
+                
+                <!-- Pain Points -->
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="p-6 bg-red-50 rounded-lg">
+                        <div class="text-red-600 text-4xl mb-3">😤</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Buried in Data</h3>
+                        <p class="text-gray-600 text-sm">Spend hours in Meta Ads Manager trying to make sense of numbers</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg">
+                        <div class="text-red-600 text-4xl mb-3">💸</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Money Wasted</h3>
+                        <p class="text-gray-600 text-sm">Keep funding poor performers while top creatives get insufficient budget</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg">
+                        <div class="text-red-600 text-4xl mb-3">⏰</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Creative Fatigue</h3>
+                        <p class="text-gray-600 text-sm">Miss the signs until your CPL has already doubled</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Everything You Need to Optimize Creative Performance
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Built on 15 years of campaign management experience
+                </p>
+            </div>
+            
+            <!-- Feature Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Instant Performance Insights</h3>
+                    <p class="text-gray-600">
+                        See which creatives drive the most leads at the lowest CPL. No more digging through Meta's reports.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Benchmarking</h3>
+                    <p class="text-gray-600">
+                        Compare each creative against your account average. Know instantly if you're above or below par.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Creative Fatigue Detection</h3>
+                    <p class="text-gray-600">
+                        Get alerts when creative performance starts declining. Refresh before it costs you.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Actionable Recommendations</h3>
+                    <p class="text-gray-600">
+                        Don't just see the data—get specific actions: "Scale this," "Pause that," "Test new variant."
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Team Collaboration</h3>
+                    <p class="text-gray-600">
+                        Invite your team or freelancers. Everyone sees the same data, no more screenshots.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">One-Click Reports</h3>
+                    <p class="text-gray-600">
+                        Export clean PDF reports for clients or management. Professional, branded, ready to share.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- See It In Action -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    See Your Top Performers at a Glance
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Every creative ranked by performance. Know instantly which ones are driving results.
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-4 md:p-8 shadow-xl">
+                    <img src="assets/images/creative-list.png" alt="Top Performing Creatives View" class="rounded-lg w-full shadow-lg" onerror="this.style.display='none'">
+                </div>
+                
+                <!-- Feature Highlights -->
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Instant Sorting</h3>
+                        <p class="text-gray-600">Sort by leads, spend, CPL, CTR, or impressions with one click</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Visual Preview</h3>
+                        <p class="text-gray-600">See actual creative thumbnails alongside performance data</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Key Metrics</h3>
+                        <p class="text-gray-600">All critical data in one view: leads, spend, CPL, CTR</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Get Started in 3 Simple Steps
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    From zero to insights in under 5 minutes
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row gap-8 mb-12 items-center">
+                    <div class="md:w-1/2 order-2 md:order-1">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">1</div>
+                            <h3 class="text-2xl font-bold text-gray-900">Connect Your Meta Account</h3>
+                        </div>
+                        <p class="text-gray-600 text-lg">
+                            One-click secure connection to your Meta Ads account. We only need read access—we never make changes to your campaigns.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 order-1 md:order-2">
+                        <div class="bg-gray-100 rounded-lg p-8 h-64 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row gap-8 mb-12 items-center">
+                    <div class="md:w-1/2">
+                        <div class="bg-gray-100 rounded-lg p-8 h-64 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"></path>
+                                <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"></path>
+                                <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl">2</div>
+                            <h3 class="text-2xl font-bold text-gray-900">We Analyze Your Data</h3>
+                        </div>
+                        <p class="text-gray-600 text-lg">
+                            Our system automatically syncs your campaign data, groups creatives, calculates benchmarks, and identifies patterns.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2 order-2 md:order-1">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xl">3</div>
+                            <h3 class="text-2xl font-bold text-gray-900">Get Actionable Insights</h3>
+                        </div>
+                        <p class="text-gray-600 text-lg">
+                            See your top performers, underperformers, and get specific recommendations on what to do next. Simple as that.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 order-1 md:order-2">
+                        <div class="bg-gray-100 rounded-lg p-8 h-64 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Credibility -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Built by Performance Marketing Veterans
+                </h2>
+                <p class="text-xl text-gray-300 mb-12">
+                    This isn't just another analytics tool. It's built by Webdura, a team that's been in the trenches managing Meta campaigns since 2010.
+                </p>
+                
+                <!-- Stats -->
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">15+</div>
+                        <div class="text-gray-400">Years Managing Campaigns</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">₹50+ Cr</div>
+                        <div class="text-gray-400">Annual Ad Spend Managed</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">200+</div>
+                        <div class="text-gray-400">Brands Served</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">10,000+</div>
+                        <div class="text-gray-400">Campaigns Optimized</div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 p-8 bg-white/10 backdrop-blur-sm rounded-xl">
+                    <p class="text-lg italic text-gray-300">
+                        "We built this tool because we got tired of spending hours each week analyzing creative performance for our clients. Now we use it every day—and we're sharing it with you."
+                    </p>
+                    <div class="mt-4 flex items-center justify-center gap-3">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full"></div>
+                        <div class="text-left">
+                            <div class="font-semibold">Webdura Team</div>
+                            <div class="text-sm text-gray-400">Performance Marketing Agency</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Simple, Transparent Pricing
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Start with a free 30-day trial. No credit card required.
+                </p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+                
+                <!-- Free Plan -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Free Trial</h3>
+                        <div class="text-4xl font-bold text-gray-900 mb-2">
+                            ₹0
+                        </div>
+                        <div class="text-gray-600">For 30 days</div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Full access to all features</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">1 Meta Ads account</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Up to 3 users</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">No credit card required</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#cta" class="block w-full text-center bg-gray-100 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition">
+                        Start Free Trial
+                    </a>
+                </div>
+                
+                <!-- Starter Plan -->
+                <div class="bg-white p-8 rounded-xl shadow-md border-2 border-blue-600 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                            MOST POPULAR
+                        </span>
+                    </div>
+                    
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+                        <div class="text-4xl font-bold text-gray-900 mb-2">
+                            ₹299
+                            <span class="text-lg text-gray-600 font-normal">/month</span>
+                        </div>
+                        <div class="text-gray-600">Beta Launch Price</div>
+                        <div class="text-sm text-blue-600 font-semibold mt-1">Lock in this price forever!</div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">All features included</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">1 Meta Ads account</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Up to 5 users</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">PDF export</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Email support</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#cta" class="btn-pulse block w-full text-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Agency Plan -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Agency</h3>
+                        <div class="text-4xl font-bold text-gray-900 mb-2">
+                            Custom
+                        </div>
+                        <div class="text-gray-600">Let's talk</div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Everything in Starter</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Multiple accounts</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Unlimited users</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">White-label reports</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Priority support</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="/cdn-cgi/l/email-protection#98ecf7f7f4ebd8effdfafcedeaf9b6f1f6" class="block w-full text-center bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
+                        Contact Us
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-600">
+                    🎁 <strong>Limited Time:</strong> First 50 customers lock in ₹299/month forever (regular price: ₹999/month)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="py-16 md:py-24 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center text-white">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                    Stop Guessing. Start Optimizing.
+                </h2>
+                <p class="text-xl md:text-2xl mb-8 text-white/90">
+                    Join hundreds of marketers who are making smarter creative decisions every day.
+                </p>
+                
+                <!-- Email Signup Form -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl max-w-xl mx-auto">
+                    <form id="signup-form" class="space-y-4">
+                        <input 
+                            type="email" 
+                            id="email"
+                            placeholder="Enter your work email" 
+                            required
+                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        >
+                        <button 
+                            type="submit"
+                            class="w-full bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-800 transition">
+                            Start Free 30-Day Trial →
+                        </button>
+                    </form>
+                    <p class="text-sm text-white/80 mt-4">
+                        No credit card required • Cancel anytime • 30-day money-back guarantee
+                    </p>
+                </div>
+                
+                <div class="mt-8">
+                    <p class="text-white/90">
+                        Need help getting started? 
+                        <a href="/cdn-cgi/l/email-protection#91e5fefefde2d1e6f4f3f5e4e3f0bff8ff" class="underline hover:text-white">Talk to our team</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+                    Frequently Asked Questions
+                </h2>
+                
+                <div class="space-y-6">
+                    
+                    <div class="border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full text-left flex items-start justify-between gap-4 group">
+                            <span class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition">
+                                How is this different from Meta Ads Manager?
+                            </span>
+                            <svg class="w-6 h-6 text-gray-400 flex-shrink-0 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-gray-600">
+                            <p>Meta Ads Manager shows you raw data. We turn that data into actionable insights. You'll see instant benchmarking ("35% below average CPL"), creative fatigue warnings, and specific recommendations ("Scale this creative"). Plus, it's designed for collaboration—your whole team can access the same view without sharing Meta account credentials.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full text-left flex items-start justify-between gap-4 group">
+                            <span class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition">
+                                Is my data secure?
+                            </span>
+                            <svg class="w-6 h-6 text-gray-400 flex-shrink-0 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-gray-600">
+                            <p>Absolutely. We only request read-only access to your Meta Ads account—we can never make changes to your campaigns. All data is encrypted in transit and at rest. We never share your data with third parties. Built by an agency that handles sensitive client data for 15 years, security is in our DNA.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full text-left flex items-start justify-between gap-4 group">
+                            <span class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition">
+                                Can I cancel anytime?
+                            </span>
+                            <svg class="w-6 h-6 text-gray-400 flex-shrink-0 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-gray-600">
+                            <p>Yes! Cancel anytime with one click. No questions asked, no hassles. Your data will be available for download for 30 days after cancellation. We also offer a 30-day money-back guarantee—if you're not satisfied for any reason, we'll refund your first payment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full text-left flex items-start justify-between gap-4 group">
+                            <span class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition">
+                                Do you support Google Ads or other platforms?
+                            </span>
+                            <svg class="w-6 h-6 text-gray-400 flex-shrink-0 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-gray-600">
+                            <p>Currently, we only support Meta Ads (Facebook & Instagram). Google Ads, LinkedIn, and other platforms are on our roadmap. Want to influence what we build next? Let us know at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e69289898a95a691838482939487c88f88">[email&#160;protected]</a>—we prioritize features based on customer demand.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full text-left flex items-start justify-between gap-4 group">
+                            <span class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition">
+                                I'm struggling with my campaigns. Can Webdura help?
+                            </span>
+                            <svg class="w-6 h-6 text-gray-400 flex-shrink-0 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-gray-600">
+                            <p>Yes! If the tool shows you're underperforming and you need expert help, our agency team at Webdura can step in. We offer free 30-minute strategy audits to tool users. Based on what we see in your data, we'll tell you exactly what's wrong and how to fix it. If you want us to manage campaigns for you, we can discuss that too. <a href="https://webdura.in/contact" class="text-blue-600 hover:underline">Contact us here</a>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pb-6">
+                        <button class="faq-question w-full text-left flex items-start justify-between gap-4 group">
+                            <span class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition">
+                                What if I need training to improve my Meta ads skills?
+                            </span>
+                            <svg class="w-6 h-6 text-gray-400 flex-shrink-0 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-gray-600">
+                            <p>We're developing a hands-on Meta Ads training program taught by our performance marketing team. It will cover creative strategy, campaign optimization, scaling, and everything we've learned managing ₹50+ Cr in ad spend. Interested? <a href="/cdn-cgi/l/email-protection#9eeaf1f1f2eddee9fbfcfaebecffb0f7f0a1edebfcf4fbfdeaa3caecfff7f0f7f0f9bed7f0eafbecfbedea" class="text-blue-600 hover:underline">Drop us an email</a> and we'll notify you when it launches.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600">
+                        Still have questions? 
+                        <a href="/cdn-cgi/l/email-protection#a3d7cccccfd0e3d4c6c1c7d6d1c28dcacd" class="text-blue-600 hover:underline font-semibold">Email us</a> 
+                        or 
+                        <a href="https://wa.me/919876543210" class="text-blue-600 hover:underline font-semibold">WhatsApp us</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                
+                <!-- Company Info -->
+                <div>
+                    <div class="text-2xl font-bold mb-4">Webdura <span class="text-blue-400">Tools</span></div>
+                    <p class="text-gray-400 mb-4">
+                        Performance marketing intelligence built by practitioners.
+                    </p>
+                    <div class="text-sm text-gray-400">
+                        Part of Webdura<br/>
+                        Performance Marketing Agency<br/>
+                        Since 2010
+                    </div>
+                </div>
+                
+                <!-- Product -->
+                <div>
+                    <h4 class="font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+                        <li><a href="#" class="hover:text-white transition">Roadmap</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company -->
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://webdura.in/about" class="hover:text-white transition">About Webdura</a></li>
+                        <li><a href="https://webdura.in/services" class="hover:text-white transition">Agency Services</a></li>
+                        <li><a href="https://webdura.in/case-studies" class="hover:text-white transition">Case Studies</a></li>
+                        <li><a href="https://webdura.in/contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/cdn-cgi/l/email-protection#91e5fefefde2d1e6f4f3f5e4e3f0bff8ff" class="hover:text-white transition">Email Support</a></li>
+                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-gray-400 text-sm">
+                    © 2024 Webdura. All rights reserved.
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://linkedin.com/company/webdura" class="text-gray-400 hover:text-white transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/webdura" class="text-gray-400 hover:text-white transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('svg');
+                
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Form submission (placeholder - integrate with your backend)
+        const signupForm = document.getElementById('signup-form');
+        
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Replace this with your actual signup logic
+            alert(`Thanks! We'll send you an invite to: ${email}`);
+            
+            // In production, send to your backend:
+            // fetch('/api/signup', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ email })
+            // });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const targ
