@@ -1,0 +1,50 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Node modules (if you use npm/node later)
+node_modules/
+npm-debug.log
+
+# Build/Deployment Files
+dist/
+build/
+.env
+.env.local
+
+# Backup Files
+*.bak
+*.backup
+*-old.*
+*-backup.*
+
+# Large/Binary Files You Don't Need
+# (uncomment if you want to exclude certain image types)
+# *.psd
+# *.ai
+# *.sketch
+
+# Reference/Documentation Files That Shouldn't Be in Production
+# (Keep these for now, but consider moving to a docs/ folder)
+# logo-reference.png
